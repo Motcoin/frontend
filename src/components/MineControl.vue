@@ -25,6 +25,7 @@ setup(){
   const getActivePorts = () => {
     useFindActiveNodes().then(ports => activePorts.value = ports)
   }
+  getActivePorts()
   const mineBlock = (port:number) => {
     console.log('called mineBlock with port',port);
     useMineBlock('Agency Agency', port)

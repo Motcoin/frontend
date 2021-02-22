@@ -70,3 +70,5 @@ export const useMineBlock = (newBlockData: string, port: number) => {
     setSpecificPort(port,false)
   })
 }
+
+useBlockchain()
