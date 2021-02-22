@@ -13,7 +13,7 @@
 
 <script lang="ts">
 import { defineComponent, ref, Ref } from 'vue';
-import { useFindActiveNodes, loadingState, useMineBlock } from '../service/mine'
+import { useFindActiveNodes, useMineBlock, loadingState } from '../service/mine'
 import MineButton from './MineButton.vue'
 
 export default defineComponent({

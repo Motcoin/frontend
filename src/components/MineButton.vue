@@ -1,13 +1,12 @@
 <template>
-  <button v-bind="$attrs" :disabled="loading || disabled">
+  <button v-bind="$attrs" @click="resetSpin" :disabled="loading || disabled">
     <pickaxe class="h-full w-full" v-if="!loading && !disabled" />
-    <loading class="animate-spin h-full w-full" v-else-if="loading" />
-    <disabled v-else />
+    <loading class="animate-spin h-full w-full"  v-else-if="loading" />
   </button>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent,ref } from 'vue';
 import { Pickaxe, Loading } from 'mdue'
 
 export default defineComponent({
@@ -17,8 +16,12 @@ components: {
 props: {
   loading: {
     type: Boolean,
-    required: true
+    default: false
   },
+  disabled: {
+    type: Boolean,
+    default: false
+  }
 },
 });
 </script>
