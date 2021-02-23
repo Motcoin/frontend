@@ -1,5 +1,5 @@
 <template>
-  <button v-bind="$attrs" @click="resetSpin" :disabled="loading || disabled">
+  <button v-bind="$attrs" :disabled="loading || disabled">
     <pickaxe class="h-full w-full" v-if="!loading && !disabled" />
     <loading class="animate-spin h-full w-full"  v-else-if="loading" />
   </button>
