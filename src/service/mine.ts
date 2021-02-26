@@ -57,7 +57,8 @@ watch(port,() => {
 export const useMineBlock = (newBlockData: string, port: number) => {
   const data = { data: `Miner: ${port}, ` + newBlockData }
   setSpecificPort(port, true)
-  fetch(`http://localhost:${port}/mineBlock`,{ 
+  console.trace()
+  return fetch(`http://localhost:${port}/mineBlock`,{ 
       method: 'post', 
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify(data)
