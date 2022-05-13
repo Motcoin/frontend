@@ -1,7 +1,21 @@
-import { TokenAxiosWrapper } from 'vue-3-base-utils'
+import axios from 'axios'
 
-const axios = new TokenAxiosWrapper({axiosConfig: { baseURL: 'http://localhost:8000'}, localStorage: true }).create()
+const getToken = () => localStorage.getItem('token')
 
-export const useLogin = (username: string) => axios.post('/auth/login',{ username })
+const saveToken = (token: string) => localStorage.setItem('token',token)
 
-export default axios
+const instance = axios.create({ baseURL: 'http://localhost:8000' })
+
+instance.interceptors.request.use(config => {
+    config.headers = {
+        'Authorization': `Bearer ${getToken()}`,
+    }
+    return config
+})
+
+export const useLogin = (username: string) => instance.post('/auth/login',{ username }).then((res) => {
+    saveToken(res.data.token)
+    return res
+})
+
+export default instance

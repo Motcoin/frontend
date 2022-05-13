@@ -1,3 +1,3 @@
-import axios from './login'
+import instance from './login'
 
-export const test = () => axios.get('/auth/test')
+export const test = () => instance.get('/auth/test')
